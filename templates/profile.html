@@ -1,0 +1,37 @@
+{%- extends "master.html" %}
+
+{%- block main %}
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <p class="title">
+              {{ user.username }}'s Profile
+            </p>
+          </div>
+        </div>
+      </nav>
+
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <em class="subtitle">
+              {{ user["bio"] }}
+            </em>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <nav id="stats" class="level has-background-light">
+    <!-- additional statistics may be added here -->
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Join Date</p>
+        <p class="title">{{ user["created_date"].month }}/{{ user["created_date"].day }}/{{ user["created_date"].year }}</p>
+      </div>
+    </div>
+  </nav>
+{% endblock -%}

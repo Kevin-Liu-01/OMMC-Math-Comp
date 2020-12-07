@@ -1,0 +1,22 @@
+{%- extends "master.html" %}
+
+{%- block main %}
+  <aside class="block has-background-light menu">
+    <p class="menu-label">
+      General
+    </p>
+    <ul class="menu-list">
+      <li><a class="setting is-active">Profile</a></li>
+      <li><a class="setting">Visibility</a></li>
+    </ul>
+    <p class="menu-label">
+      Account
+    </p>
+    <ul class="menu-list">
+      <li><a class="setting">Modify Information</a></li>
+      <li><a class="setting">Delete Account</a></li>
+    </ul>
+  </aside>
+
+  <script src="{{ url_for('static', filename='setting.js') }}" defer></script>
+{% endblock -%}

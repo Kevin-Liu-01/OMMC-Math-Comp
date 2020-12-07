@@ -1,0 +1,25 @@
+{%- extends "master.html" %}
+
+{%- block main %}
+  <section class="hero is-primary">
+    <div class="hero-body">
+      {%- if not current_user.authenticated %}
+        <!-- what to display when the user goes on the page without being signed in -->
+        <p class="title">
+          OMMC
+        </p>
+        <p class="subtitle">
+          Description here.
+        </p>
+      {%- else %}
+        <!-- what to display when the user goes on the page while being signed in -->
+        <p class="title">
+          Welcome, {{ current_user.username }}!
+        </p>
+        <p class="subtitle">
+          Visit your profile <a class="hyperlink" href="/user/{{ current_user.username }}">here.</a>
+        </p>
+      {% endif -%}
+    </div>
+  </section>
+{% endblock -%}

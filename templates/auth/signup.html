@@ -1,0 +1,72 @@
+{%- extends "master.html" %}
+
+{%- block main %}
+  <div class="column is-4 is-offset-4">
+    <h3 class="title">Sign up</h3>
+    <div class="box">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="notification is-danger">
+              {{ messages[0] }}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form id="signup" method="POST" action="/signup">
+        <div class="field">
+          <div class="control">
+            <input class="input is-medium" type="email" name="email" value="{{ email }}" placeholder="Email address" autofocus="" required>
+          </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <input class="input is-medium" type="text" name="name" value="{{ username }}" autocomplete="username" placeholder="Username" autofocus="" required>
+            </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <input
+              id="password"
+              class="input is-medium"
+              type="password"
+              name="password"
+              value="{{ password }}"
+              autocomplete="current-password"
+              placeholder="Password"
+              required
+            />
+            <div class="icon is-medium">
+              <span id="toggle" class="mdi mdi-eye"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="g-recaptcha" data-sitekey="6LeUQ_wZAAAAAL24DuAB0navLMupX39Uyjwv6S4W"></div>
+
+        <br />
+        <div class="field">
+          <label class="checkbox">
+            <input type="checkbox">
+              Remember me
+            </input>
+          </label>
+        </div>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
+        <button id="submit" class="button is-block is-primary is-fullwidth">Sign up</button>
+      </form>
+    </div>
+
+    <p class="subtitle is-6">
+      Already have an account? <a class="hyperlink" href="/login">Log in</a> instead.
+    </p>
+  </div>
+
+  <script>
+    function onSubmit(event) {
+      $("#signup")[0].submit();
+    }
+  </script>
+{% endblock -%}

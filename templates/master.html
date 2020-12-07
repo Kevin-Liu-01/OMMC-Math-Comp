@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="website" />
+
+    <title>Website &middot; {{ title }}</title>
+
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap"
+    />
+    <script defer
+      src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//www.google.com/recaptcha/api.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css" />
+
+    <link
+      rel="stylesheet" type="text/css"
+      href="{{ url_for('static', filename='pace/pace.css') }}"
+    />
+    <script defer src="{{ url_for('static', filename='pace/pace.js') }}"></script>
+
+    <link
+      rel="stylesheet" type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+  <body class="has-navbar-fixed-top">
+    <header>
+      <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-content">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbar-content" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="/">
+              Home
+            </a>
+            <!-- add more links to pages here -->
+          </div>
+
+          <div class="navbar-end">
+            {%- if not current_user.authenticated %}
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-primary" href="/signup">
+                    <strong>Sign up</strong>
+                  </a>
+                  <a class="button is-grey-lighter" href="/login">
+                    Log in
+                  </a>
+                </div>
+              </div>
+            {%- else %}
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  <img id="profile-photo" alt="{{ current_user.username }}" src="{{ current_user.image_url }}" />
+                </a>
+                <div class="navbar-dropdown">
+                  <a class="navbar-item" href="/user/{{ current_user.username }}">
+                    Profile
+                  </a>
+                  <!-- AN OPTIONAL SETTINGS PAGE [ SEE settings.html ]
+                  <a class="navbar-item" href="/settings">
+                    Settings
+                  </a>
+                  -->
+                </div>
+              </div>
+
+              <div class="navbar-item">
+                <a class="button is-primary" href="/logout">
+                  <strong>Log out</strong>
+                </a>
+              </div>
+            {% endif -%}
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {% block main %}{% endblock %}
+  </body>
+</html>
