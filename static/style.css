@@ -7,10 +7,6 @@ a:hover, a:active {
   text-decoration: underline !important;
 }
 
-.is-primary {
-  background-color: purple !important;
-}
-
 .hyperlink {
   color: #7FDBFF !important;
 }

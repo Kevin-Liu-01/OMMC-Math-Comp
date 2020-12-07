@@ -12,6 +12,10 @@ $(document).ready(() => {
       $burger.toggleClass("is-active");
     });
 
+  const $hasColor = $(".has-color");
+  if ($hasColor)
+    $hasColor.css("background-color", "purple");
+
   const $submit = $("#submit");
   if ($submit)
     $submit.click(() => {
@@ -37,7 +41,6 @@ $(document).ready(() => {
     });
 
   const $stats = $("#stats");
-
   if ($stats)
     $stats.css("padding", 15);
 });
