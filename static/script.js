@@ -13,8 +13,16 @@ $(document).ready(() => {
     });
 
   const $hasColor = $(".has-color");
-  if ($hasColor)
-    $hasColor.css("background-color", "purple");
+  if ($hasColor) {
+    $hasColor.css({
+      "background-color": "#AB3942",
+      "color": "white",
+    });
+    $hasColor.find("*").css({
+      "background-color": "#AB3942",
+      "color": "white",
+    });
+  }
 
   const $submit = $("#submit");
   if ($submit)
