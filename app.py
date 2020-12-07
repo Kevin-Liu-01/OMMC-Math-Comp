@@ -5,6 +5,8 @@ from flask_limiter import Limiter
 from flask_seasurf import SeaSurf
 from user import User
 
+app = ""
+
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile("config.cfg")
@@ -54,4 +56,5 @@ def create_app():
     return app
 
 if __name__ == "__main__":
-    create_app().run(port=3000)
+    app = create_app()
+    app.run(port=3000)
