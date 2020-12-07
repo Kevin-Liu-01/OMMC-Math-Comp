@@ -73,7 +73,7 @@ def signup():
             posts = [],
             email = email,
             bio = "No bio set.",
-            followers = ["Hexademy"],
+            followers = [],
             following = [],
             password = hash_password(password),
             created_date = datetime.datetime.now(),
