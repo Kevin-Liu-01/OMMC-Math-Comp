@@ -53,4 +53,5 @@ def create_app():
     SeaSurf(app)
     return app
 
-create_app().run(port=3000)
+if __name__ == "__main":
+    create_app().run(port=3000)
