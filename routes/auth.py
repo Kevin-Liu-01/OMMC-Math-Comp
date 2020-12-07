@@ -12,7 +12,7 @@ def check_password(user_object, password: str):
     if not user_object.exists:
         return False
 
-    return user_object["user"]["password"] == hash_password(password)
+    return user_object["password"] == hash_password(password)
 
 def assertConditions(user_object, remember: bool, conditions):
     for condition, message in conditions:
