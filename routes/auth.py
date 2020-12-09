@@ -42,10 +42,9 @@ def login():
         [
             request.form.get("g-recaptcha-response", False),
             user_object.exists,
-            Checker(username).is_valid,
             check_password(user_object, password)
         ],
-        ["Please complete the reCAPTCHA.", "Invalid username provided.", "Username not allowed.", "Username or password is incorrect."]
+        ["Please complete the reCAPTCHA.", "Invalid username provided.", "Username or password is incorrect."]
     )):
         return redirect(url_for("main.home"))
     else:
@@ -65,10 +64,11 @@ def signup():
         [
             request.form.get("g-recaptcha-response", False),
             not user_object.exists,
+            Checker(username).is_valid,
             validate_email(email, check_regex=True, use_blacklist=True, check_mx=False, debug=False),
             len(list(user_object.database.where("email", "==", email).stream())) == 0
         ],
-        ["Please complete the reCAPTCHA.", "Username is already in use.", "Invalid email.", "Email is already in use."]
+        ["Please complete the reCAPTCHA.", "Username is already in use.", "Username not allowed.", "Invalid email.", "Email is already in use."]
     )):
         user_object.update(
             points = 0,
