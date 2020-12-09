@@ -57,7 +57,6 @@ small note: if you've made changes in the `static` folder, you must do `Ctrl+F5`
 
 8. resume on this step once you've made changes. if the server is still running, you'll notice that it was logging traffic to your website. if you are unable to type, simply press `Ctrl+C` to end the logging. this will allow you to type again. make sure you've saved all changed files. then, you can commit them. these commands may take a while to complete (up to a couple minutes at max), so make sure not to interrupt them.
 ```
-git checkout -b anynamehere
 git add .
 git commit -am "any commit message here, make sure it is descriptive"
 ```
