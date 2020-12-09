@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import current_user, login_user, login_required, logout_user
 from validate_email import validate_email
 from markupsafe import escape
+from name import Checker
 from user import User
 
 auth = Blueprint("auth", __name__)
@@ -41,9 +42,10 @@ def login():
         [
             request.form.get("g-recaptcha-response", False),
             user_object.exists,
+            Checker(username).is_valid,
             check_password(user_object, password)
         ],
-        ["Please complete the reCAPTCHA.", "Invalid username provided.", "Username or password is incorrect."]
+        ["Please complete the reCAPTCHA.", "Invalid username provided.", "Username not allowed.", "Username or password is incorrect."]
     )):
         return redirect(url_for("main.home"))
     else:
