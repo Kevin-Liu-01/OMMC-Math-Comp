@@ -10,6 +10,10 @@ nlp.add_pipe(profanity_filter.spacy_component, last=True)
 
 class Checker:
     def __init__(self, username_str: str):
+        if " " in username_str:
+            self.is_valid = False
+            return
+        
         try:
             UsernameValidator(additional_names=["ommc"], reserved_names=reserved).validate_all(username_str)
             self.is_valid = nlp(username_str)._.is_profane
