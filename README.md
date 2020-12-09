@@ -53,7 +53,7 @@ this should respond with a message saying the site is live. it is actually live 
 
 7. go to this link in your browser: http://127.0.0.1:5000/. it should show the contents of the site. you are now browsing the site without publishing it to an actual website. this way, you can make local changes and test it in your own browser, instead of publishing code that may be broken. when making changes, TEST FIRST! you can publish it to git once you're done.
 
-small note: if you've made changes in the `static` folder, you must do `Ctrl+F5` for them to update.
+small note: if you've made changes in the `static` folder, you must do `Ctrl+F5` on the website for them to update.
 
 8. resume on this step once you've made changes. if the server is still running, you'll notice that it was logging traffic to your website. if you are unable to type, simply press `Ctrl+C` to end the logging. this will allow you to type again. make sure you've saved all changed files. then, you can commit them. these commands may take a while to complete (up to a couple minutes at max), so make sure not to interrupt them.
 ```
