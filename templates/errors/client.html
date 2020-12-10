@@ -6,5 +6,20 @@
     <div class="notification is-danger">
       {{ message }}
     </div>
+
+    <div class="buttons">
+      <a class="button is-grey-lighter" href="/">
+        Go Home
+      </a>
+      <a class="button is-grey-lighter" onclick="back()">
+        Go Back
+      </a>
+    </div>
   </div>
+
+  <script>
+    function back() {
+      window.history.go(-1);
+    }
+  </script>
 {% endblock -%}
