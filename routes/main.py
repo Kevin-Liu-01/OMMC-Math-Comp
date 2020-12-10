@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, abort
 from flask_login import login_required
 from markupsafe import escape
 from user import User
@@ -19,7 +19,7 @@ def profile(name: str):
     user_object = User(name)
 
     if not user_object.exists:
-        return render_template("errors/missing.html", title="404"), 404
+        return abort(404)
     return render_template("profile.html", title=name, user=user_object)
 
 @main.route("/settings")
