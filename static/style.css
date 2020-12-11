@@ -17,6 +17,24 @@ a:hover, a:active {
   position: absolute;
 }
 
+.center-container {
+  position: relative;
+  height: 90vh;
+}
+
+.center-item {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.client {
+  padding-bottom: 1vh;
+}
+
 #control {
   position: relative;
 }

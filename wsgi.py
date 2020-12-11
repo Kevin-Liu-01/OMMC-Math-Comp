@@ -19,16 +19,18 @@ def create_app():
     def does_not_exist(err):
         return render_template(
             "errors/client.html",
-            title="403 Forbidden",
-            message="You do not have access to this page."
+            code = "403",
+            title = "403 Forbidden",
+            message = "You do not have access to this page."
         ), 403
 
     @app.errorhandler(404)
     def does_not_exist(err):
         return render_template(
             "errors/client.html",
-            title="404 Not Found",
-            message="Page not found."
+            code = "404",
+            title = "404 Not Found",
+            message = "Page not found."
         ), 404
 
     @app.errorhandler(500)
