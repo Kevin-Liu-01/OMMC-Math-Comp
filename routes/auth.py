@@ -1,8 +1,9 @@
-import hashlib, datetime
+import hashlib, datetime, requests
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import current_user, login_user, login_required, logout_user
 from validate_email import validate_email
 from markupsafe import escape
+from typing import Union
 from name import Checker
 from user import User
 
@@ -14,6 +15,19 @@ def check_password(user_object, password: str):
         return False
 
     return user_object["password"] == hash_password(password)
+
+def logCaptcha(result: Union[str, bool]):
+    if isinstance(result, bool):
+        return
+
+    try:
+        requests.post("https://www.google.com/recaptcha/api/siteverify", data = {
+            "secret": "6LeUQ_wZAAAAAPn3LFgBprWlUsjvextIQqY3FHnq",
+            "remoteip": request.remote_addr,
+            "response": result
+        })
+    except:
+        pass
 
 def assertConditions(user_object, remember: bool, conditions):
     for condition, message in conditions:
@@ -36,11 +50,13 @@ def login():
 
     username = escape(request.form.get("name", ""))
     password = escape(request.form.get("password", ""))
+    captcha = request.form.get("g-recaptcha-response", False)
     user_object = User(username)
 
+    logCaptcha(captcha)
     if assertConditions(user_object, request.form.get("remember", True), zip(
         [
-            request.form.get("g-recaptcha-response", False),
+            captcha,
             user_object.exists,
             check_password(user_object, password)
         ],
@@ -58,11 +74,13 @@ def signup():
     email = escape(request.form.get("email", ""))
     username = escape(request.form.get("name", ""))
     password = escape(request.form.get("password", ""))
+    captcha = request.form.get("g-recaptcha-response", False)
     user_object = User(username)
 
+    logCaptcha(captcha)
     if assertConditions(user_object, request.form.get("remember", True), zip(
         [
-            request.form.get("g-recaptcha-response", False),
+            captcha,
             not user_object.exists,
             Checker(username).is_valid,
             validate_email(email, check_regex=True, use_blacklist=True, check_mx=False, debug=False),
