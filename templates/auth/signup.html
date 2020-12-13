@@ -55,7 +55,7 @@
         </div>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
-        <button id="submit" class="button is-block is-primary is-fullwidth">Sign up</button>
+        <button id="submit" class="button is-block is-info is-fullwidth">Sign up</button>
       </form>
     </div>
 
@@ -65,8 +65,18 @@
   </div>
 
   <script>
-    function onSubmit(event) {
-      $("#signup")[0].submit();
-    }
+    const $password = $("#password");
+    const $toggle = $("#toggle");
+
+    if ($toggle)
+      $toggle.click(() => {
+        if ($toggle.hasClass("mdi-eye")) {
+          $password.attr("type", "text");
+          $toggle.removeClass("mdi-eye").addClass("mdi-eye-off");
+        } else {
+          $password.attr("type", "password");
+          $toggle.removeClass("mdi-eye-off").addClass("mdi-eye");
+        }
+      });
   </script>
 {% endblock -%}

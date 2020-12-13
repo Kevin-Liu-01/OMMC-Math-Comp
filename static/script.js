@@ -12,18 +12,6 @@ $(document).ready(() => {
       $burger.toggleClass("is-active");
     });
 
-  // const $hasColor = $(".has-color");
-  // if ($hasColor) {
-  //   $hasColor.css({
-  //     "background-color": "#AB3942",
-  //     "color": "white",
-  //   });
-  //   $hasColor.find("*").css({
-  //     "background-color": "#AB3942",
-  //     "color": "white",
-  //   });
-  // }
-
   const $submit = $("#submit");
   if ($submit)
     $submit.click(() => {
@@ -33,22 +21,4 @@ $(document).ready(() => {
         $submit.removeClass("is-loading");
       }, 3000);
     });
-
-  const $password = $("#password");
-  const $toggle = $("#toggle");
-
-  if ($toggle)
-    $toggle.click(() => {
-      if ($toggle.hasClass("mdi-eye")) {
-        $password.attr("type", "text");
-        $toggle.removeClass("mdi-eye").addClass("mdi-eye-off");
-      } else {
-        $password.attr("type", "password");
-        $toggle.removeClass("mdi-eye-off").addClass("mdi-eye");
-      }
-    });
-
-  const $stats = $("#stats");
-  if ($stats)
-    $stats.css("padding", 15);
 });
