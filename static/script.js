@@ -12,17 +12,17 @@ $(document).ready(() => {
       $burger.toggleClass("is-active");
     });
 
-  const $hasColor = $(".has-color");
-  if ($hasColor) {
-    $hasColor.css({
-      "background-color": "#AB3942",
-      "color": "white",
-    });
-    $hasColor.find("*").css({
-      "background-color": "#AB3942",
-      "color": "white",
-    });
-  }
+  // const $hasColor = $(".has-color");
+  // if ($hasColor) {
+  //   $hasColor.css({
+  //     "background-color": "#AB3942",
+  //     "color": "white",
+  //   });
+  //   $hasColor.find("*").css({
+  //     "background-color": "#AB3942",
+  //     "color": "white",
+  //   });
+  // }
 
   const $submit = $("#submit");
   if ($submit)
