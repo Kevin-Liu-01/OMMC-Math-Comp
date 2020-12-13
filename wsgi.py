@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_login import login_user, LoginManager
 from flask_limiter.util import get_remote_address
+from sassutils.wsgi import SassMiddleware
 from flask_limiter import Limiter
 from flask_seasurf import SeaSurf
 from user import User
@@ -8,6 +9,9 @@ from user import User
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile("config.cfg")
+    app.wsgi_app = SassMiddleware(app.wsgi_app, {
+        f"{__name__}": ("static/sass", "static/css", "/static/css")
+    })
 
     from routes.auth import auth
     app.register_blueprint(auth)

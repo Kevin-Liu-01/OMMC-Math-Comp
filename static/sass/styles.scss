@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+$info: #209CEE;
+
+@import "bulma/bulma.sass";
+
+input {
+  /* fun little joke */
+  cursor: vertical-text;
+}
+
+a:hover, a:active {
+  text-decoration: underline !important;
+}
+
+.hyperlink {
+  color: #7FDBFF !important;
+}
+
+.icon {
+  top: 0.5em;
+  right: 0.75em;
+  position: absolute;
+}
+
+.center-container {
+  position: relative;
+  height: 90vh;
+}
+
+.center-item {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.client {
+  padding-bottom: 1vh;
+}
+
+#control {
+  position: relative;
+}
+
+#profile-photo {
+  border-radius: 9001px;
+}
+
+/* scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4d4d4d #F5F5F5;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #4d4d4d;
+  border-radius: 20px;
+  border: 2px solid #F5F5F5;
+}

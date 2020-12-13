@@ -57,20 +57,4 @@
       Don't have an account? <a class="hyperlink" href="/signup">Sign up</a> instead.
     </p>
   </div>
-
-  <script>
-    const $password = $("#password");
-    const $toggle = $("#toggle");
-
-    if ($toggle)
-      $toggle.click(() => {
-        if ($toggle.hasClass("mdi-eye")) {
-          $password.attr("type", "text");
-          $toggle.removeClass("mdi-eye").addClass("mdi-eye-off");
-        } else {
-          $password.attr("type", "password");
-          $toggle.removeClass("mdi-eye-off").addClass("mdi-eye");
-        }
-      });
-  </script>
 {% endblock -%}
