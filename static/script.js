@@ -1,10 +1,6 @@
 $(document).ready(() => {
   console.log("heya");
 
-  $(":header").css("font-family", "Open Sans, sans-serif");
-  $(":not(:header)").css("font-family", "Raleway, sans-serif");
-  $(".title").css("font-family", "Open Sans, sans-serif");
-
   const $burger = $(".navbar-burger")
   if ($burger)
     $burger.click(() => {
@@ -19,7 +15,7 @@ $(document).ready(() => {
 
       setTimeout(() => {
         $submit.removeClass("is-loading");
-      }, 3000);
+      }, 2500);
     });
 
   const $stats = $("#stats");

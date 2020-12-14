@@ -6,30 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="website" />
 
-    <title>Website &middot; {{ title }}</title>
+    <title>OMMC &middot; {{ title }}</title>
 
-    <link
-      rel="stylesheet"
-      href="//fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap"
-    />
-    <script defer
-      src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-      integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
-      crossorigin="anonymous"
-    ></script>
-    <script src="//www.google.com/recaptcha/api.js"></script>
-
+    <!-- pace -->
     <link
       rel="stylesheet" type="text/css"
       href="{{ url_for('static', filename='pace/pace.css') }}"
     />
     <script defer src="{{ url_for('static', filename='pace/pace.js') }}"></script>
 
+    <!-- bulma -->
     <link
       rel="stylesheet" type="text/css"
       href="{{ url_for('static', filename="css/styles.scss.css") }}"
     />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css" />
+
+    <!-- global scripts -->
+    <script defer
+      src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="//www.google.com/recaptcha/api.js"></script>
     <script defer src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body class="has-navbar-fixed-top">
@@ -47,6 +47,9 @@
           <div class="navbar-start">
             <a class="navbar-item" href="/">
               Home
+            </a>
+            <a class="navbar-item" href="/faq">
+              FAQs
             </a>
             <!-- add more links to pages here -->
           </div>

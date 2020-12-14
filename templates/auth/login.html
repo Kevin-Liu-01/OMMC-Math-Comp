@@ -2,11 +2,11 @@
 
 {%- block main %}
   <div class="column is-4 is-offset-4">
-    <h3 class="title">Login</h3>
+    <h3 class="title is-family-secondary">Login</h3>
     <div class="box">
       {%- with messages = get_flashed_messages() %}
         {%- if messages %}
-          <div class="notification is-danger">
+          <div class="notification is-danger is-family-primary">
             {{ messages[0] }}
           </div>
         {% endif -%}
@@ -53,7 +53,7 @@
       </form>
     </div>
 
-    <p class="subtitle is-6">
+    <p class="subtitle is-6 is-family-primary">
       Don't have an account? <a class="hyperlink" href="/signup">Sign up</a> instead.
     </p>
   </div>

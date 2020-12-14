@@ -6,7 +6,7 @@
       <nav class="level">
         <div class="level-left">
           <div class="level-item">
-            <p class="title">
+            <p class="title is-family-secondary">
               {{ user.username }}'s Profile
             </p>
           </div>
@@ -16,7 +16,7 @@
       <nav class="level">
         <div class="level-left">
           <div class="level-item">
-            <em class="subtitle">
+            <em class="subtitle is-family-primary">
               {{ user["bio"] }}
             </em>
           </div>
@@ -30,7 +30,7 @@
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Join Date</p>
-        <p class="title">{{ user["created_date"].month }}/{{ user["created_date"].day }}/{{ user["created_date"].year }}</p>
+        <p class="title is-family-primary">{{ user["created_date"].month }}/{{ user["created_date"].day }}/{{ user["created_date"].year }}</p>
       </div>
     </div>
   </nav>

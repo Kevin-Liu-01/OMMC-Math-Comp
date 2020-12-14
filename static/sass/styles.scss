@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-$info: #db2553;
+$info: #c9424b;
 $link: #42ecf5;
 
 @import "bulma/bulma.sass";
@@ -54,18 +54,18 @@ a:hover, a:active {
 * {
   scrollbar-width: thin;
   scrollbar-color: #4d4d4d #F5F5F5;
-}
 
-*::-webkit-scrollbar {
-  width: 10px;
-}
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
 
-*::-webkit-scrollbar-track {
-  background: #F5F5F5;
-}
+  &::-webkit-scrollbar-track {
+    background: #F5F5F5;
+  }
 
-*::-webkit-scrollbar-thumb {
-  background-color: #4d4d4d;
-  border-radius: 20px;
-  border: 2px solid #F5F5F5;
+  &::-webkit-scrollbar-thumb {
+    background-color: #4d4d4d;
+    border-radius: 20px;
+    border: 2px solid #F5F5F5;
+  }
 }

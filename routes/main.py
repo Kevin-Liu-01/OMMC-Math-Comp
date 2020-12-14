@@ -9,9 +9,9 @@ main = Blueprint("main", __name__)
 def home():
     return render_template("index.html", title="Home")
 
-@main.route("/about")
+@main.route("/faq")
 def about():
-    return render_template("about.html", title="About")
+    return render_template("faq.html", title="FAQs")
 
 @main.route("/user/<name>")
 def profile(name: str):
