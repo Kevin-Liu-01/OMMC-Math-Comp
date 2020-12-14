@@ -4,13 +4,13 @@
   <div class="column is-4 is-offset-4">
     <h3 class="title is-family-secondary">Sign up</h3>
     <div class="box">
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
+      {%- with messages = get_flashed_messages() %}
+        {%- if messages %}
           <div class="notification is-danger is-family-primary">
               {{ messages[0] }}
           </div>
-        {% endif %}
-      {% endwith %}
+        {% endif -%}
+      {% endwith -%}
 
       <form id="signup" method="POST" action="/signup">
         <div class="field">
@@ -59,8 +59,10 @@
       </form>
     </div>
 
-    <p class="subtitle is-6 is-family-primary">
-      Already have an account? <a class="hyperlink" href="/login">Log in</a> instead.
-    </p>
+    <div class="column has-text-centered">
+      <p class="subtitle is-6 is-family-primary">
+        Already have an account? <a class="hyperlink" href="/login">Log in</a> instead.
+      </p>
+    </div>
   </div>
 {% endblock -%}
