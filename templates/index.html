@@ -9,7 +9,7 @@
           OMMC
         </p>
         <p class="subtitle is-family-primary">
-          Description here.
+          Online Monmouth Math Competition
         </p>
       {%- else %}
         <!-- what to display when the user goes on the page while being signed in -->
@@ -20,6 +20,65 @@
           Visit your profile <a class="hyperlink" href="/user/{{ current_user.username }}">here.</a>
         </p>
       {% endif -%}
+    </div>
+  </section>
+
+  <div class="columns is-gapless">
+    <div class="column">
+      <section class="hero has-background-light">
+        <div class="hero-body px-5">
+          <p class="heading">The point of OMMC</p>
+          <p>
+            The purpose of OMMC, or the Online Monmouth Math Competition, is to give talented high school and middle school students an exciting and engaging way to develop their skills in mathematics.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="column">
+      <section class="hero has-background-white">
+        <div class="hero-body px-5">
+          <p class="heading">How will it work</p>
+          <p>
+            Our current competition consists of 2 individual rounds and 1 team round administered over the span of 4 whole days, consisting of questions with similar difficulty as those posed on the well-established AMC 10/12 and AIME math competitions.
+          <p>
+        </div>
+      </section>
+    </div>
+
+    <div class="column">
+      <section class="hero has-background-light">
+        <div class="hero-body px-5">
+          <p class="heading">What do I gain</p>
+          <p>
+            Students will have the opportunity to compete in teams, developing valuable teamwork and collaboration skills. In the competition, they will be able to solve thought-provoking challenging mathematics questions.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="px-6">
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <strong class="subtitle is-family-secondary">
+              Ready to get started?
+            </strong>
+
+            {%- if not current_user.authenticated %}
+              <p class="is-family-primary">
+                <a class="hyperlink" href="/signup">Sign up</a> to get started!
+              </p>
+            {%- else %}
+              <p class="is-family-primary">
+                Do <a class="hyperlink" href="/">this</a> to enter the competition. (placeholder)
+              </p>
+            {% endif -%}
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 {% endblock -%}

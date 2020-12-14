@@ -50,8 +50,8 @@ a:hover, a:active {
   border-radius: 9001px;
 }
 
-/* scrollbar */
 * {
+  /* scrollbar */
   scrollbar-width: thin;
   scrollbar-color: #4d4d4d #F5F5F5;
 
@@ -68,4 +68,8 @@ a:hover, a:active {
     border-radius: 20px;
     border: 2px solid #F5F5F5;
   }
+
+  /* highlights */
+  &::-moz-selection { background: #42ecf5; }
+  &::selection { background: #42ecf5; }
 }
