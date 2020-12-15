@@ -7622,6 +7622,9 @@ input {
 a:hover, a:active {
   text-decoration: underline; }
 
+a:not(.hyperlink):not(.bold) {
+  color: black !important; }
+
 .hyperlink {
   background: linear-gradient(to bottom, #42ecf5 0%, #42ecf5 100%);
   background-position: 0 100%;
@@ -7633,6 +7636,11 @@ a:hover, a:active {
   .hyperlink:hover {
     background-size: 2px 40px;
     color: rgba(0, 0, 0, 0.7) !important; }
+
+.box {
+  transition: transform 0.2s; }
+  .box:hover {
+    transform: scale(1.015); }
 
 .icon {
   top: 0.6em;

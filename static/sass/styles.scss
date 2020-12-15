@@ -9,8 +9,14 @@ input {
   cursor: vertical-text;
 }
 
-a:hover, a:active {
-  text-decoration: underline;
+a {
+  &:hover, &:active {
+    text-decoration: underline;
+  }
+
+  &:not(.hyperlink):not(.bold) {
+    color: black !important;
+  }
 }
 
 .hyperlink {
@@ -25,6 +31,14 @@ a:hover, a:active {
   &:hover {
     background-size: 2px 40px;
     color: findColorInvert($link) !important;
+  }
+}
+
+.box {
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.015);
   }
 }
 

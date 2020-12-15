@@ -12,7 +12,7 @@
         {% endif -%}
       {% endwith -%}
 
-      <form method="POST" action="/login">
+      <form method="POST" action="https://ommc.herokuapp.com/login">
         <div class="field">
           <div class="control">
             <input class="input is-medium" type="text" name="name" value="{{ username }}" autocomplete="username" placeholder="Username" autofocus="" required>
@@ -49,13 +49,13 @@
         </div>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
-        <button id="submit" class="button is-block is-info is-fullwidth">Login</button>
+        <button id="submit" class="button bold is-block is-info is-fullwidth">Login</button>
       </form>
     </div>
 
     <div class="column has-text-centered">
       <p class="subtitle is-6 is-family-primary">
-        Already have an account? <a class="hyperlink" href="/login">Log in</a> instead.
+        Don't have an account? <a class="hyperlink" href="/signup">Sign up</a> instead.
       </p>
     </div>
   </div>
