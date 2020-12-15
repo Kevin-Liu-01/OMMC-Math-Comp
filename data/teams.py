@@ -1,15 +1,14 @@
 from data.firestore import DatabaseController
 
 class Team(DatabaseController):
-    def __init__(self, name: str, authenticated: bool = False):
+    def __init__(self, name: str):
         super().__init__(data="teams")
 
         user = self.get_data(name)
         self.profile = user
 
-        self.username = name
+        self.name = name
         self.exists = user["exists"]
-        self.authenticated = authenticated
 
     def __getitem__(self, item: str):
         return self.profile["data"][item]

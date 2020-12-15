@@ -29,7 +29,6 @@ def participants():
     return render_template(
         "participants.html",
         title="Participants",
-        users=User("placeholder").database.stream(),
         teams=Team("placeholder").database.stream()
     )
 

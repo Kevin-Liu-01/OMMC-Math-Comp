@@ -3,25 +3,57 @@
 {%- block main %}
   <section class="hero is-info">
     <div class="hero-body">
-      <nav class="level">
-        <div class="level-left">
-          <div class="level-item">
-            <p class="title is-family-secondary">
-              Participants
-            </p>
-          </div>
-        </div>
-      </nav>
+      <p class="title is-family-secondary">
+        Participants
+      </p>
+      <p class="subtitle is-family-primary">
+       View the users that signed up for OMMC.
+      </p>
+    </div>
+  </section>
 
-      <nav class="level">
-        <div class="level-left">
-          <div class="level-item">
-            <em class="subtitle is-family-primary">
-              View the users that signed up for OMMC.
-            </em>
-          </div>
+  <section class="hero has-background-light">
+    <div class="hero-body px-5">
+      <p class="heading">Teams</p>
+      {%- if teams %}
+        {%- for doc in teams %}
+          {%- with team = doc.to_dict() %}
+            <div class="box">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>{{ doc.id }}</strong>
+                      <br />
+
+                      <span>{{ team.members[0] }}</span>
+                      {%- for member in team.members %}
+                        {%- if member != team.members[0] %}
+                          <span>&middot; <a class="hyperlink" href="/user/{{ member }}">{{ member }}</a></span>
+                        {% endif -%}
+                      {% endfor -%}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+            {% endwith -%}
+        {% endfor -%}
+      {%- else %}
+        <div class="box">
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Error</strong>
+                  <br />
+                  Unfortunately, the teams have failed to load. Try reloading the page.
+                </p>
+              </div>
+            </div>
+          </article>
         </div>
-      </nav>
+      {% endif -%}
     </div>
   </section>
 {% endblock -%}

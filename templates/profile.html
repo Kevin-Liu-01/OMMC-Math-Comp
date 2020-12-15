@@ -3,25 +3,12 @@
 {%- block main %}
   <section class="hero is-info">
     <div class="hero-body">
-      <nav class="level">
-        <div class="level-left">
-          <div class="level-item">
-            <p class="title is-family-secondary">
-              {{ user.username }}'s Profile
-            </p>
-          </div>
-        </div>
-      </nav>
-
-      <nav class="level">
-        <div class="level-left">
-          <div class="level-item">
-            <em class="subtitle is-family-primary">
-              {{ user["bio"] }}
-            </em>
-          </div>
-        </div>
-      </nav>
+      <p class="title is-family-secondary">
+        {{ user.username }}'s Profile
+      </p>
+      <p class="subtitle is-family-primary">
+        Member of <em><a class="hyperlink" href="/teams/{{ user['team'] }}">{{ user["team"] }}</a></em>
+      </p>
     </div>
   </section>
 
