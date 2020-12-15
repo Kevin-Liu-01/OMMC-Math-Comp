@@ -3,9 +3,9 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import current_user, login_user, login_required, logout_user
 from validate_email import validate_email
 from markupsafe import escape
+from data.user import User
 from typing import Union
 from name import Checker
-from user import User
 
 auth = Blueprint("auth", __name__)
 hash_password = lambda p : hashlib.sha3_384(p.encode()).hexdigest()
@@ -91,6 +91,7 @@ def signup():
         user_object.update(
             points = 0,
             posts = [],
+            team = "Solo",
             email = email,
             bio = "No bio set.",
             followers = [],

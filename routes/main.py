@@ -1,7 +1,9 @@
 from flask import Blueprint, render_template, abort
 from flask_login import login_required
 from markupsafe import escape
-from user import User
+
+from data.teams import Team
+from data.user import User
 
 main = Blueprint("main", __name__)
 
@@ -21,6 +23,15 @@ def profile(name: str):
     if not user_object.exists:
         return abort(404)
     return render_template("profile.html", title=name, user=user_object)
+
+@main.route("/participants")
+def participants():
+    return render_template(
+        "participants.html",
+        title="Participants",
+        users=User("placeholder").database.stream(),
+        teams=Team("placeholder").database.stream()
+    )
 
 @main.route("/settings")
 @login_required
