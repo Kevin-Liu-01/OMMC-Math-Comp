@@ -56,5 +56,5 @@ def create_app():
     def ip_whitelist():
         return request.remote_addr == "127.0.0.1"
 
-    # SeaSurf(app)
+    SeaSurf(app)
     return app
