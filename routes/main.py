@@ -15,6 +15,10 @@ def home():
 def about():
     return render_template("faq.html", title="FAQs")
 
+@main.route("/contact")
+def contact():
+    return render_template("contact.html", title="Contact Us")
+
 @main.route("/user/<name>")
 def profile(name: str):
     name = escape(name or "")
