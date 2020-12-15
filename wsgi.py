@@ -4,9 +4,6 @@ from flask_login import login_user, LoginManager
 from sassutils.wsgi import SassMiddleware
 from flask_limiter import Limiter
 from flask_seasurf import SeaSurf
-from flask_sslify import SSLify
-from typing import Optional
-from http import HTTPStatus
 from data.user import User
 
 def create_app():
@@ -44,14 +41,6 @@ def create_app():
     def does_not_exist(err):
         return render_template("errors/error.html", title="500 Server Error"), 500
 
-    @app.before_request
-    def before_request() -> Optional[Response]:
-        if request.scheme == 'http':
-            return redirect(
-                url_for(request.endpoint, _scheme='https', _external=True),
-                HTTPStatus.TEMPORARY_REDIRECT
-            )
-
     login_manager = LoginManager()
     login_manager.session_protection = "strong"
     login_manager.login_view = "auth.login"
@@ -67,6 +56,5 @@ def create_app():
     def ip_whitelist():
         return request.remote_addr == "127.0.0.1"
 
-    SSLify(app)
-    SeaSurf(app)
+    # SeaSurf(app)
     return app
