@@ -14,4 +14,4 @@ class Team(DatabaseController):
         return self.profile["data"][item]
 
     def update(self, **new_data):
-        self.set_data(self.username, new_data)
+        self.set_data(self.name, new_data)
