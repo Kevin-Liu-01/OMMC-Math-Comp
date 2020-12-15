@@ -72,9 +72,15 @@
                 <a class="hyperlink mt-4" href="/signup">Sign up</a> to enter the competition!
               </p>
             {%- else %}
-              <p class="is-family-primary">
-                Create <a class="hyperlink mt-4" href="/create">a team</a> to participate!
-              </p>
+              {%- if current_user["team"] != "Solo" %}
+                <p class="is-family-primary">
+                  You're in a a team! Your team can take the test on <a class="hyperlink mt-4" href="/team/{{ current_user['team'] }}">your team page</a> once it is released.
+                </p>
+              {%- else %}
+                <p class="is-family-primary">
+                  You haven't joined a team yet. Either <a class="hyperlink mt-4" href="/create">create one</a> or <a class="hyperlink" href="/team/Solo">stay solo (default)</a>.
+                </p>
+              {% endif -%}
             {% endif -%}
           </div>
         </div>
