@@ -47,7 +47,7 @@ this should respond with the flask version, python version, and werkzeug version
 
 6. run the server. use this command:
 ```
-flask run
+flask run --cert=adhoc
 ```
 this should respond with a message saying the site is live. it is actually live on your own network, so others will not be able to see it.
 
