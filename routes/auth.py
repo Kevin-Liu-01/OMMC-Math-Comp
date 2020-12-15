@@ -3,9 +3,11 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import current_user, login_user, login_required, logout_user
 from validate_email import validate_email
 from markupsafe import escape
-from data.user import User
 from typing import Union
 from name import Checker
+
+from data.user import User
+from data.team import Team
 
 auth = Blueprint("auth", __name__)
 hash_password = lambda p : hashlib.sha3_384(p.encode()).hexdigest()
@@ -101,6 +103,11 @@ def signup():
             image_url = "https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_1280.png",
         )
 
+        solo_team = Team("Solo")
+        current_members = solo_team["members"]
+        current_members.append(username)
+
+        solo_team.update(members=current_members)
         return redirect(url_for("main.home"))
     else:
         return render_template("auth/signup.html", title="Sign Up", email=email, username=username, password=password)
