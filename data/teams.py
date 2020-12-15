@@ -1,4 +1,4 @@
-from firestore import DatabaseController
+from data.firestore import DatabaseController
 
 class Team(DatabaseController):
     def __init__(self, name: str, authenticated: bool = False):
