@@ -26,7 +26,7 @@
                       <strong>{{ doc.id }}</strong>
                       <br />
 
-                      <span>{{ team.members[0] }}</span>
+                      <a class="hyperlink" href="/user/{{ team.members[0] }}">{{ team.members[0] }}</a>
                       {%- for member in team.members %}
                         {%- if member != team.members[0] %}
                           <span>&middot; <a class="hyperlink" href="/user/{{ member }}">{{ member }}</a></span>
