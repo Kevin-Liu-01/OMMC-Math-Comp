@@ -49,7 +49,7 @@ def create_app():
         if request.scheme == 'http':
             return redirect(
                 url_for(request.endpoint, _scheme='https', _external=True),
-                HTTPStatus.PERMANENT_REDIRECT
+                HTTPStatus.TEMPORARY_REDIRECT
             )
 
     login_manager = LoginManager()
