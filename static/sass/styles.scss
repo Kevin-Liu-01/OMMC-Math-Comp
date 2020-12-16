@@ -34,12 +34,37 @@ a {
   }
 }
 
+.hoverlink {
+  background: linear-gradient(to bottom, $info 0%, $info 100%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  transition: background-size 0.2s;
+  color: $info !important;
+  text-decoration: none;
+
+  &:hover {
+    background-size: 2px 4px;
+    color: findColorInvert($info) !important;
+  }
+}
+
 .box {
   transition: transform 0.2s;
 
   &:hover {
     transform: scale(1.015);
   }
+}
+
+.main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
 }
 
 .icon {
@@ -66,12 +91,12 @@ a {
   padding-bottom: 1vh;
 }
 
-#control {
-  position: relative;
+.profile-photo {
+  border-radius: 9001px;
 }
 
-#profile-photo {
-  border-radius: 9001px;
+#control {
+  position: relative;
 }
 
 * {

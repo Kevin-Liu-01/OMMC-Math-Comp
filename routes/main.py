@@ -20,6 +20,10 @@ def redirect_home():
 def about():
     return render_template("faq.html", title="FAQs")
 
+@main.route("/creators")
+def creators():
+    return render_template("creators.html", title="Creators")
+
 @main.route("/favicon.ico")
 def favicon():
     return send_from_directory(

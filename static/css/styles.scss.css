@@ -7637,10 +7637,30 @@ a:not(.hyperlink):not(.bold) {
     background-size: 2px 40px;
     color: rgba(0, 0, 0, 0.7) !important; }
 
+.hoverlink {
+  background: linear-gradient(to bottom, #c9424b 0%, #c9424b 100%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  transition: background-size 0.2s;
+  color: #c9424b !important;
+  text-decoration: none; }
+  .hoverlink:hover {
+    background-size: 2px 4px;
+    color: #fff !important; }
+
 .box {
   transition: transform 0.2s; }
   .box:hover {
     transform: scale(1.015); }
+
+.main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+.content {
+  flex: 1; }
 
 .icon {
   top: 0.6em;
@@ -7662,11 +7682,11 @@ a:not(.hyperlink):not(.bold) {
 .client {
   padding-bottom: 1vh; }
 
+.profile-photo {
+  border-radius: 9001px; }
+
 #control {
   position: relative; }
-
-#profile-photo {
-  border-radius: 9001px; }
 
 * {
   /* scrollbar */

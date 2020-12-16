@@ -43,7 +43,7 @@
     <script src="//www.google.com/recaptcha/api.js"></script>
     <script defer src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
-  <body class="has-navbar-fixed-top">
+  <body class="main has-navbar-fixed-top">
     <header>
       <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -86,7 +86,7 @@
             {%- else %}
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
-                  <img id="profile-photo" alt="{{ current_user.username }}" src="{{ current_user.image_url }}" />
+                  <img class="profile-photo" alt="{{ current_user.username }}" src="{{ current_user.image_url }}" />
                 </a>
                 <div class="navbar-dropdown">
                   <a class="navbar-item" href="/user/{{ current_user.username }}">
@@ -109,6 +109,17 @@
       </nav>
     </header>
 
-    {% block main %}{% endblock %}
+    <main class="content">
+      {% block main %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+      <div class="has-text-centered">
+        <small>&copy; Copyright 2020, OMMC</small>
+        <p class="heading">
+          Crafted with ❤️ by the OMMC <a class="hyperlink" href="/creators">web design team</a>.
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
