@@ -49,7 +49,7 @@ a {
   }
 }
 
-.box {
+.box:not(.no-expand) {
   transition: transform 0.2s;
 
   &:hover {

@@ -1,10 +1,24 @@
-import os
-from flask import Blueprint, render_template, send_from_directory, current_app, abort, redirect, url_for, request
-from flask_login import login_required
+import os, requests
+from flask import Blueprint, render_template, abort, redirect, url_for, request, flash
+from flask_login import login_required, current_user
 from markupsafe import escape
+from typing import Union
 
 from data.team import Team
 from data.user import User
+
+def logCaptcha(result: Union[str, bool]):
+    if isinstance(result, bool):
+        return
+
+    try:
+        requests.post("https://www.google.com/recaptcha/api/siteverify", data = {
+            "secret": "6LeUQ_wZAAAAAPn3LFgBprWlUsjvextIQqY3FHnq",
+            "remoteip": request.remote_addr,
+            "response": result
+        })
+    except:
+        pass
 
 main = Blueprint("main", __name__)
 
@@ -26,6 +40,8 @@ def creators():
 
 @main.route("/favicon.ico")
 def favicon():
+    from flask import send_from_directory, current_app
+
     return send_from_directory(
         os.path.join(current_app.root_path, "static"),
         "favicon.ico",
@@ -53,12 +69,55 @@ def team(name: str):
 @main.route("/join", methods=["GET", "POST"])
 @login_required
 def join():
+    from flask import session
+
     if request.method == "GET":
         return render_template(
             "join.html",
             title="Join Team",
+            team_name = session.get("team_name", ""),
+            open_join = session.get("open_join", False),
             teams=Team("placeholder").database.stream()
         )
+
+    team_name = escape(request.form.get("team_name", ""))
+    join_code = escape(request.form.get("join_code", ""))
+    captcha = request.form.get("g-recaptcha-response", False)
+    team_object = Team(team_name)
+
+    logCaptcha(captcha)
+    if not captcha:
+        session["open_join"] = True
+        session["team_name"] = team_name
+
+        flash("Please complete the captcha.")
+        return redirect(url_for("main.join"))
+
+    if not team_object.exists:
+        session["open_join"] = True
+        session["team_name"] = team_name
+
+        flash("Unable to get team object.")
+        return redirect(url_for("main.join"))
+
+    if team_object["join_code"] != join_code:
+        session["open_join"] = True
+        session["team_name"] = team_name
+
+        flash("Incorrect join code provided.")
+        return redirect(url_for("main.join"))
+
+    current_members = team_object["members"]
+    current_members.append(current_user.username)
+
+    team_object.update(members=current_members)
+    current_user.update(
+        team = team_name
+    )
+
+    session["team_name"] = ""
+    session["open_join"] = False
+    return redirect(f"/team/{team_name}")
 
 @main.route("/settings")
 @login_required

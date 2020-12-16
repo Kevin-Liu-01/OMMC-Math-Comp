@@ -7649,9 +7649,9 @@ a:not(.hyperlink):not(.bold) {
     background-size: 2px 4px;
     color: #fff !important; }
 
-.box {
+.box:not(.no-expand) {
   transition: transform 0.2s; }
-  .box:hover {
+  .box:not(.no-expand):hover {
     transform: scale(1.015); }
 
 .main {

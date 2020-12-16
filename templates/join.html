@@ -16,25 +16,15 @@
     <div class="column is-half">
       <section class="hero">
         <div class="hero-body px-6">
-          <p class="heading">Existing Teams</p>
+          <p class="heading">Click to Join</p>
           {%- if teams %}
             {%- for doc in teams %}
               {%- with team = doc.to_dict() %}
-                <div class="box">
+                <div id="{{ doc.id }}" class="box team-box">
                   <article class="media">
                     <div class="media-content">
                       <div class="content">
-                        <div class="columns is-gapless is-mobile pb-2">
-                          <div class="column is-half">
-                            <a href="/team/{{ doc.id }}"><strong>{{ doc.id }}</strong></a>
-                          </div>
-
-                          {%- if doc.id != "Solo" %}
-                            <div class="column is-half">
-                              <a class="is-pulled-right"><strong>Join</strong></a>
-                            </div>
-                          {% endif -%}
-                        </div>
+                        <a href="/team/{{ doc.id }}"><strong>{{ doc.id }}</strong></a>
 
                         <p>
                           <a class="hyperlink" href="/user/{{ team.members[0] }}">{{ team.members[0] }}</a>
@@ -71,7 +61,7 @@
 
     <div class="column is-half">
       <div class="p-6 has-offset-1">
-        <p class="heading">Create Team</p>
+        <p class="heading">Create Your Own</p>
         <div class="box">
           {%- with messages = get_flashed_messages() %}
             {%- if messages %}
@@ -115,4 +105,60 @@
       </div>
     </div>
   </div>
+
+  <div class="modal{{ ' is-active' if open_join else ''}}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <div class="box no-expand">
+        <button class="delete is-pulled-right mb-4" aria-label="close"></button>
+        {%- with messages = get_flashed_messages() %}
+          {%- if messages %}
+            <div class="notification is-danger is-family-primary">
+              {{ messages[0] }}
+            </div>
+          {% endif -%}
+        {% endwith -%}
+
+        <form method="POST" action="/join">
+          <div class="field">
+            <div class="control">
+              <input
+                class="input is-medium"
+                name="join_code"
+                value="{{ password }}"
+                placeholder="Join Code"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="g-recaptcha" data-sitekey="6LeUQ_wZAAAAAL24DuAB0navLMupX39Uyjwv6S4W"></div>
+          <input type="hidden" name="team_name" value="{{ team_name }}" />
+          <br />
+
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
+          <button id="submit" class="button bold is-block is-info is-fullwidth">Join</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(() => {
+      const $modal = $(".modal");
+      const $teamName = $("[name='team_name']");
+
+      $(".team-box").click(event => {
+        if (event.currentTarget.id !== "Solo") {
+          $teamName.val(event.currentTarget.id);
+          $modal.addClass("is-active");
+        }
+      });
+
+      $(".modal-background, .delete").click(() => {
+        $teamName.val("");
+        $modal.removeClass("is-active");
+      });
+    });
+  </script>
 {% endblock -%}

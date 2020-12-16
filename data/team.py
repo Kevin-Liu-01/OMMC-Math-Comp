@@ -4,11 +4,11 @@ class Team(DatabaseController):
     def __init__(self, name: str):
         super().__init__(data="teams")
 
-        user = self.get_data(name)
-        self.profile = user
+        team = self.get_data(name)
+        self.profile = team
 
         self.name = name
-        self.exists = user["exists"]
+        self.exists = team["exists"]
 
     def __getitem__(self, item: str):
         return self.profile["data"][item]

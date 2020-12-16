@@ -37,7 +37,7 @@
   {%- if current_user.authenticated %}
     {%- if current_user.get_id() == user.username %}
       {%- if current_user["team"] == "Solo" %}
-        <section class="p-6">
+        <section class="px-6 pt-2">
           <div class="box">
             <article class="media">
               <div class="media-content">
@@ -47,7 +47,7 @@
                   </strong>
 
                   <p class="is-family-primary">
-                    Your form will show here once the test becomes available.
+                    If you chose to stay solo, your form will show here once the test becomes available. Otherwise, you can <a class="hyperlink" href="/join">join a team</a>.
                   </p>
                 </div>
               </div>
