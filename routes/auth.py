@@ -98,6 +98,7 @@ def signup():
             bio = "No bio set.",
             followers = [],
             following = [],
+            submitted = False,
             password = hash_password(password),
             created_date = datetime.datetime.now(),
             image_url = "https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_1280.png",
@@ -111,6 +112,12 @@ def signup():
         return redirect(url_for("main.home"))
     else:
         return render_template("auth/signup.html", title="Sign Up", email=email, username=username, password=password)
+
+@auth.route("/create", methods=["POST"])
+@login_required
+def create():
+    flash("This functionality is still undergoing testing.")
+    return redirect(url_for("main.join"))
 
 @auth.route("/logout")
 @login_required

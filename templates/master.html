@@ -4,8 +4,18 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="website" />
+    <meta name="description" content="OMMC" />
 
+    <!-- embeds -->
+    <meta property="og:title" content="OMMC &middot; {{ title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ommc.herokuapp.com" />
+    <meta property="og:image" content="https://media.discordapp.net/attachments/778356169223700481/785890106489438269/fixup2.png" />
+    <meta property="og:description" content="Online Monmouth Math Competition" />
+    <meta name="theme-color" content="#c9424b">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- title and favicon -->
     <title>OMMC &middot; {{ title }}</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -53,13 +63,12 @@
             <a class="navbar-item" href="/">
               Home
             </a>
+            <a class="navbar-item" href="/join">
+              Join
+            </a>
             <a class="navbar-item" href="/faq">
               FAQs
             </a>
-            <a class="navbar-item" href="/participants">
-              Participants
-            </a>
-            <!-- add more links to pages here -->
           </div>
 
           <div class="navbar-end">
@@ -83,11 +92,9 @@
                   <a class="navbar-item" href="/user/{{ current_user.username }}">
                     Profile
                   </a>
-                  <!-- AN OPTIONAL SETTINGS PAGE [ SEE settings.html ]
-                  <a class="navbar-item" href="/settings">
-                    Settings
+                  <a class="navbar-item" href="/team/{{ current_user['team'] }}">
+                    Team
                   </a>
-                  -->
                 </div>
               </div>
 

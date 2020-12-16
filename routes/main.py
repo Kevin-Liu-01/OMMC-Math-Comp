@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, render_template, send_from_directory, current_app, abort
+from flask import Blueprint, render_template, send_from_directory, current_app, abort, redirect, url_for, request
 from flask_login import login_required
 from markupsafe import escape
 
@@ -11,6 +11,10 @@ main = Blueprint("main", __name__)
 @main.route("/")
 def home():
     return render_template("index.html", title="Home")
+
+@main.route("/home")
+def redirect_home():
+    return redirect(url_for("main.home"))
 
 @main.route("/faq")
 def about():
@@ -42,13 +46,15 @@ def team(name: str):
         return abort(404)
     return render_template("team.html", title=name, team=team_object)
 
-@main.route("/participants")
-def participants():
-    return render_template(
-        "participants.html",
-        title="Participants",
-        teams=Team("placeholder").database.stream()
-    )
+@main.route("/join", methods=["GET", "POST"])
+@login_required
+def join():
+    if request.method == "GET":
+        return render_template(
+            "join.html",
+            title="Join Team",
+            teams=Team("placeholder").database.stream()
+        )
 
 @main.route("/settings")
 @login_required

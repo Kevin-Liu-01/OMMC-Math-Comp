@@ -8,6 +8,7 @@ from data.user import User
 
 def create_app():
     app = Flask(__name__)
+    app.url_map.strict_slashes = False
     app.config.from_pyfile("config.cfg")
     app.wsgi_app = SassMiddleware(app.wsgi_app, {
         f"{__name__}": ("static/sass", "static/css", "/static/css")

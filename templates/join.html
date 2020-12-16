@@ -1,0 +1,118 @@
+{%- extends "master.html" %}
+
+{%- block main %}
+  <section class="hero is-info">
+    <div class="hero-body">
+      <p class="title is-family-secondary">
+        Teams
+      </p>
+      <p class="subtitle is-family-primary">
+        Create or join an existing team.
+      </p>
+    </div>
+  </section>
+
+  <div class="columns is-gapless is-mobile has-background-light">
+    <div class="column is-half">
+      <section class="hero">
+        <div class="hero-body px-6">
+          <p class="heading">Existing Teams</p>
+          {%- if teams %}
+            {%- for doc in teams %}
+              {%- with team = doc.to_dict() %}
+                <div class="box">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+                        <div class="columns is-gapless pb-2">
+                          <div class="column is-half">
+                            <a href="/team/{{ doc.id }}"><strong>{{ doc.id }}</strong></a>
+                          </div>
+
+                          {%- if doc.id != "Solo" %}
+                            <div class="column is-half">
+                              <a class="is-pulled-right"><strong>Join</strong></a>
+                            </div>
+                          {% endif -%}
+                        </div>
+
+                        <p>
+                          <a class="hyperlink" href="/user/{{ team.members[0] }}">{{ team.members[0] }}</a>
+                          {%- for member in team.members %}
+                            {%- if member != team.members[0] %}
+                              <span>&middot; <a class="hyperlink" href="/user/{{ member }}">{{ member }}</a></span>
+                            {% endif -%}
+                          {% endfor -%}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                {% endwith -%}
+            {% endfor -%}
+          {%- else %}
+            <div class="box">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>Error</strong>
+                      <br />
+                      Unfortunately, the teams have failed to load. Try reloading the page.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          {% endif -%}
+        </div>
+      </section>
+    </div>
+
+    <div class="column is-half">
+      <div class="p-6 has-offset-1">
+        <p class="heading">Create Team</p>
+        <div class="box">
+          {%- with messages = get_flashed_messages() %}
+            {%- if messages %}
+              <div class="notification is-danger is-family-primary">
+                {{ messages[0] }}
+              </div>
+            {% endif -%}
+          {% endwith -%}
+
+          <form method="POST" action="/create">
+            <div class="field">
+              <div class="control">
+                <input class="input is-medium" type="text" name="name" value="{{ team_name }}" placeholder="Team Name" autofocus="" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <input
+                  id="password"
+                  class="input is-medium"
+                  type="password"
+                  name="password"
+                  value="{{ password }}"
+                  placeholder="Join Code"
+                  required
+                />
+                <div class="icon is-medium">
+                  <span id="toggle" class="mdi mdi-eye"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="g-recaptcha" data-sitekey="6LeUQ_wZAAAAAL24DuAB0navLMupX39Uyjwv6S4W"></div>
+            <br />
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
+            <button id="submit" class="button bold is-block is-info is-fullwidth">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock -%}
