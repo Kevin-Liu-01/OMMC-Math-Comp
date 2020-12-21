@@ -1,6 +1,7 @@
 {%- extends "master.html" %}
 
 {%- block main %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <section class="hero is-info">
     <div class="hero-body">
       {%- if not current_user.authenticated %}
@@ -15,6 +16,7 @@
         <!-- what to display when the user goes on the page while being signed in -->
         <p class="title is-family-secondary">
           Welcome, {{ current_user.username }}!
+          
         </p>
         <p class="subtitle is-family-primary">
           Visit your profile <a class="hyperlink" href="/user/{{ current_user.username }}">here</a>.
@@ -22,7 +24,7 @@
       {% endif -%}
     </div>
   </section>
-
+  
   <div class="columns is-gapless">
     <div class="column">
       <section class="hero has-background-light">
@@ -57,14 +59,23 @@
       </section>
     </div>
   </div>
-
   <section class="px-6">
     <div class="box">
       <article class="media">
         <div class="media-content">
           <div class="content">
+        <section class="hero has-background-white">
+          <div class="hero-body px-5">
+            <p class="title is-family-secondary"> <strong>Sign up TODAY!</strong></p>
+            <p><strong>Registration opens</strong>: January 10th</p>
+              <p><strong>Registration closes</strong>: February 25th</p>
+              <p><strong>Test time</strong>: Friday, February 26th to Monday, March 1st</p>
+              <p><strong>Problem Releases, Discussion Opened</strong>: Mid-March</p>
+            <p><strong>Results returned</strong>: End of March</p>
+            <p><strong>Addtional Resources: </strong><a href="https://drive.google.com/file/d/1yk38Jg3JlmUXQuL_yZRPwiosSTPvtNTP/view">GUIDEBOOK</a></p>
+            </p>
             <strong class="subtitle is-family-secondary">
-              Ready to get started?
+               Ready to get started?
             </strong>
 
             {%- if not current_user.authenticated %}
@@ -82,9 +93,34 @@
                 </p>
               {% endif -%}
             {% endif -%}
+        </section>
           </div>
         </div>
       </article>
     </div>
   </section>
+</div>
+<div>
+<section class="px-6">
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p class="subtitle">Contact us:</p>
+        <p> Official OMMC Email: <a href="ommcofficial@gmail.com" class="fa fa-google-plus-square"></a>
+        <p> Official OMMC Twitter: <a href="https://twitter.com/OfficialOmmc" class="fa fa-twitter"></a>
+        <p> Official OMMC Instagram: <a href="https://www.instagram.com/ommcofficial/" class="fa fa-instagram"></a>
+        <p> Official OMMC YouTube: <a href="https://twitter.com/OfficialOmmc" class="fa fa-youtube"></a>
+
+      </div>
+    </div>
+  </article>
+</div>
+</section>
+</div>
+
+
+
+
+
 {% endblock -%}
