@@ -135,7 +135,7 @@ def join():
     session["open_join"] = False
     return redirect(f"/team/{team_name}")
 
-@auth.route("/create", methods=["POST"])
+@main.route("/create", methods=["POST"])
 @login_required
 def create():
     flash("This functionality is still undergoing testing.")
