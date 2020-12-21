@@ -34,6 +34,18 @@ def redirect_home():
 def about():
     return render_template("faq.html", title="FAQs")
 
+@main.route("/rules")
+def rules():
+    return render_template("rules.html", title="Rules")
+
+@main.route("/info")
+def info():
+    return render_template("info.html", title="Info")
+
+@main.route("/terms")
+def terms():
+    return render_template("terms.html", title="Terms")
+
 @main.route("/creators")
 def creators():
     return render_template("creators.html", title="Creators")
