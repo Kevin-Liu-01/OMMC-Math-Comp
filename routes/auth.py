@@ -113,12 +113,6 @@ def signup():
     else:
         return render_template("auth/signup.html", title="Sign Up", email=email, username=username, password=password)
 
-@auth.route("/create", methods=["POST"])
-@login_required
-def create():
-    flash("This functionality is still undergoing testing.")
-    return redirect(url_for("main.join"))
-
 @auth.route("/logout")
 @login_required
 def logout():

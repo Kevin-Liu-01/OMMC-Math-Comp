@@ -107,6 +107,10 @@ def join():
         flash("Incorrect join code provided.")
         return redirect(url_for("main.join"))
 
+    for team in team_object.database.where("members", "array_contains", current_user.username).stream():
+        existing_team = Team(team.id)
+        existing_team.update(members=existing_team["members"].remove(current_user.username))
+
     current_members = team_object["members"]
     current_members.append(current_user.username)
 
@@ -118,6 +122,12 @@ def join():
     session["team_name"] = ""
     session["open_join"] = False
     return redirect(f"/team/{team_name}")
+
+@auth.route("/create", methods=["POST"])
+@login_required
+def create():
+    flash("This functionality is still undergoing testing.")
+    return redirect(url_for("main.join"))
 
 @main.route("/settings")
 @login_required
