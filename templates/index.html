@@ -74,13 +74,17 @@
             <p><strong>Results returned</strong>: End of March</p>
             <p><strong>Addtional Resources: </strong><a href="https://drive.google.com/file/d/1yk38Jg3JlmUXQuL_yZRPwiosSTPvtNTP/view">GUIDEBOOK</a></p>
             </p>
-            <strong class="subtitle is-family-secondary">
+            <div class="box">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+            <p class="title is-family-secondary"><strong>
                Ready to get started?
             </strong>
-
+          </p>
             {%- if not current_user.authenticated %}
               <p class="is-family-primary">
-                <a class="hyperlink mt-4" href="/signup">Sign up</a> to enter the competition!
+                <a class="hyperlink mt-4" href="/signup"><strong>Sign up</strong></a> to enter the competition!
               </p>
             {%- else %}
               {%- if current_user["team"] != "Solo" %}
@@ -93,6 +97,10 @@
                 </p>
               {% endif -%}
             {% endif -%}
+            </div>
+            </article>
+          </div>
+        </div>
         </section>
           </div>
         </div>
