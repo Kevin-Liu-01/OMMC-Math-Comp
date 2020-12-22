@@ -20,9 +20,9 @@
         </div>
 
         <div class="field">
-            <div class="control">
-                <input class="input is-medium" type="text" name="name" value="{{ username }}" autocomplete="username" placeholder="Username" autofocus="" required>
-            </div>
+          <div class="control">
+            <input class="input is-medium" type="text" name="name" value="{{ username }}" autocomplete="username" placeholder="Username" autofocus="" required>
+          </div>
         </div>
 
         <div class="field">
@@ -44,20 +44,24 @@
         </div>
 
         <div class="g-recaptcha" data-sitekey="6LeUQ_wZAAAAAL24DuAB0navLMupX39Uyjwv6S4W"></div>
+        <div class="columns is-gapless pt-4">
+          <div class="column field">
+            <input class="is-checkradio is-info" id="remember" type="checkbox" name="remember">
+            <label for="remember">Remember me</label>
+          </div>
 
-        <br />
-        <div class="field">
-          <label class="checkbox">
-            <input type="checkbox">
-              Remember me
-            </input>
-          </label>
+          <div class="column field">
+            <input class="is-checkradio is-info" id="terms" type="checkbox" name="terms">
+            <label for="terms">I agree to the <a class="hyperlink" target="_blank" href="/terms">TOS</a></label>
+          </div>
         </div>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
         <button id="submit" class="button bold is-block is-info is-fullwidth">Sign up</button>
       </form>
     </div>
+
+    <div class="divider">Or</div>
 
     <div class="column has-text-centered">
       <p class="subtitle is-6 is-family-primary">
