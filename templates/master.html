@@ -60,11 +60,29 @@
 
         <div id="navbar-content" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="/">Home</a>
-            <a class="navbar-item" href="/join">Join</a>
-            <a class="navbar-item" href="/faq">FAQs</a>
-            <a class="navbar-item" href="/rules">Rules</a>
-            <a class="navbar-item" href="/info">Test Info</a>
+            {%- with url = url_for(request.endpoint) %}
+              <a class="navbar-item {{ 'is-active' if url == '/' else '' }}" href="/">Home</a>
+              <a class="navbar-item {{ 'is-active' if url == '/faq' else '' }}" href="/faq">FAQs</a>
+              <a class="navbar-item {{ 'is-active' if url == '/join' else '' }}" href="/join">Join</a>
+              <a class="navbar-item {{ 'is-active' if url == '/creators' else '' }}" href="/creators">Staff</a>
+
+              <div class="navbar-item has-dropdown is-boxed is-hoverable">
+                <a class="navbar-link">
+                  Contest
+                </a>
+
+                <div class="navbar-dropdown">
+                  <a class="navbar-item {{ 'is-active' if url == '/terms' else '' }}" href="/terms">TOS</a>
+                  <a class="navbar-item {{ 'is-active' if url == '/rules' else '' }}" href="/rules">Rules</a>
+                  <a class="navbar-item {{ 'is-active' if url == '/info' else '' }}" href="/info">Test Info</a>
+
+                  <hr class="navbar-divider">
+                  <div class="navbar-item">
+                    v0.9-beta.7
+                  </div>
+                </div>
+              </div>
+            {% endwith -%}
           </div>
 
           <div class="navbar-end">
@@ -80,7 +98,7 @@
                 </div>
               </div>
             {%- else %}
-              <div class="navbar-item has-dropdown is-hoverable">
+              <div class="navbar-item has-dropdown is-boxed is-hoverable">
                 <a class="navbar-link">
                   <img class="profile-photo" alt="{{ current_user.username }}" src="{{ current_user.image_url }}" />
                 </a>
