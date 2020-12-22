@@ -1,7 +1,6 @@
 {%- extends "master.html" %}
 
 {%- block main %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <section class="hero is-info">
     <div class="hero-body">
       {%- if not current_user.authenticated %}
@@ -16,7 +15,6 @@
         <!-- what to display when the user goes on the page while being signed in -->
         <p class="title is-family-secondary">
           Welcome, {{ current_user.username }}!
-          
         </p>
         <p class="subtitle is-family-primary">
           Visit your profile <a class="hyperlink" href="/user/{{ current_user.username }}">here</a>.
@@ -24,7 +22,7 @@
       {% endif -%}
     </div>
   </section>
-  
+
   <div class="columns is-gapless">
     <div class="column">
       <section class="hero has-background-light">
@@ -59,76 +57,101 @@
       </section>
     </div>
   </div>
+
   <section class="px-6">
-    <div class="box">
-      <article class="media">
-        <div class="media-content">
-          <div class="content">
-        <section class="hero has-background-white">
-          <div class="hero-body px-5">
-            <p class="title is-family-secondary"> <strong>Sign up TODAY!</strong></p>
-            <p><strong>Registration opens</strong>: January 10th</p>
-              <p><strong>Registration closes</strong>: February 25th</p>
-              <p><strong>Test time</strong>: Friday, February 26th to Monday, March 1st</p>
-              <p><strong>Problem Releases, Discussion Opened</strong>: Mid-March</p>
-            <p><strong>Results returned</strong>: End of March</p>
-            <p><strong>Addtional Resources: </strong><a href="https://drive.google.com/file/d/1yk38Jg3JlmUXQuL_yZRPwiosSTPvtNTP/view" class="hyperlink">GUIDEBOOK</a></p>
-            </p>
-            <div class="box">
-              <article class="media">
-                <div class="media-content">
-                  <div class="content">
-            <p class="title is-family-secondary"><strong>
-               Ready to get started?
-            </strong>
+    <div class="hero-body columns is-gapless">
+      <div class="column is-half">
+        <div class="timeline">
+          <header class="timeline-header">
+            <span class="tag is-medium is-info">Start</span>
+          </header>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="heading">January 10th - February 25th</p>
+              <p>Registration period</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="heading">February 26th - March 1st</p>
+              <p>Test submissions open</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="heading">Mid-March</p>
+              <p>Problems release, discussion opened</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="heading">End-March</p>
+              <p>Results returned, winners announced, and certificates awarded</p>
+            </div>
+          </div>
+
+          <div class="timeline-header">
+            <span class="tag is-medium is-info">End</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <div class="box pb-5">
+          <p class="subtitle is-family-secondary">
+            <strong>Ready to get started?</strong>
           </p>
-            {%- if not current_user.authenticated %}
+
+          {%- if not current_user.authenticated %}
+            <p class="is-family-primary">
+              <a class="hyperlink mt-4" href="/signup"><strong>Sign up</strong></a> to enter the competition!
+            </p>
+          {%- else %}
+            {%- if current_user["team"] != "Solo" %}
               <p class="is-family-primary">
-                <a class="hyperlink mt-4" href="/signup"><strong>Sign up</strong></a> to enter the competition!
+                You're in a a team! Your team can take the test on <a class="hyperlink mt-4" href="/team/{{ current_user['team'] }}">your team page</a> once it is released.
               </p>
             {%- else %}
-              {%- if current_user["team"] != "Solo" %}
-                <p class="is-family-primary">
-                  You're in a a team! Your team can take the test on <a class="hyperlink mt-4" href="/team/{{ current_user['team'] }}">your team page</a> once it is released.
-                </p>
-              {%- else %}
-                <p class="is-family-primary">
-                  You haven't joined a team yet. Either <a class="hyperlink mt-4" href="/create">create one</a> or <a class="hyperlink" href="/team/Solo">stay solo (default)</a>.
-                </p>
-              {% endif -%}
+              <p class="is-family-primary">
+                You haven't joined a team yet. Either <a class="hyperlink mt-4" href="/create">create one</a> or <a class="hyperlink" href="/team/Solo">stay solo (default)</a>.
+              </p>
             {% endif -%}
-            </div>
-            </article>
-          </div>
+          {% endif -%}
         </div>
-        </section>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-</div>
-<div>
-<section class="px-6">
-<div class="box">
-  <article class="media">
-    <div class="media-content">
-      <div class="content">
-        <p class="subtitle">Contact us:</p>
-        <p> Official OMMC Email: <a href="ommcofficial@gmail.com" class="fa fa-google-plus-square"></a>
-        <p> Official OMMC Twitter: <a href="https://twitter.com/OfficialOmmc" class="fa fa-twitter"></a>
-        <p> Official OMMC Instagram: <a href="https://www.instagram.com/ommcofficial/" class="fa fa-instagram"></a>
-        <p> Official OMMC YouTube: <a href="https://twitter.com/OfficialOmmc" class="fa fa-youtube"></a>
 
+        <div class="box">
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                <p class="subtitle is-family-secondary">
+                  <strong>Contact us!</strong>
+                </p>
+
+                <div class="columns">
+                  <p class="column has-text-centered">
+                    Email: <a href="mailto:mmcofficial@gmail.com" class="mdi mdi-email"></a>
+                  </p>
+                  <p class="column has-text-centered">
+                    Twitter: <a href="https://twitter.com/OfficialOmmc" class="mdi mdi-twitter"></a>
+                  </p>
+                  <p class="column has-text-centered">
+                    Instagram: <a href="https://www.instagram.com/ommcofficial" class="mdi mdi-instagram"></a>
+                  </p>
+                  <p class="column has-text-centered">
+                    YouTube: <a href="https://www.youtube.com/channel/UCyphrZpMeuA1ATGPzlStsng" class="mdi mdi-youtube"></a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
-  </article>
-</div>
-</section>
-</div>
-
-
-
-
-
+  </section>
 {% endblock -%}

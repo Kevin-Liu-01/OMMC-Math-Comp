@@ -127,9 +127,7 @@ def join():
     current_members.append(current_user.username)
 
     team_object.update(members=current_members)
-    current_user.update(
-        team = team_name
-    )
+    current_user.update(team = team_name)
 
     session["team_name"] = ""
     session["open_join"] = False
