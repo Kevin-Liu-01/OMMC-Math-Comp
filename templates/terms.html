@@ -7,26 +7,23 @@
         Terms of Service
       </p>
       <p class="subtitle is-family-primary">
-        Please review our Terms of Service to get a better understanding of the competition.
+        Please review our Terms of Service to get a better understanding of OMMC.
       </p>
     </div>
   </section>
 
   <section class="px-5 pt-5">
     <div class="box">
-      <p class="subtitle is-family-primary"><strong>Friday, February 26th to Monday, March 1st</strong></p>
-      <p>Headed by Ishaan Akula, Evan Chang, Bill Fei</p>
-      <p><strong>The document version of this page is available <a href="https://drive.google.com/file/d/1yI-IfmMZ8ciN0JS5ygn_DYb_5kpccRKf/view" class="hyperlink">here</a>.</strong></p>
+      <p class="heading">Headed by Ishaan Akula, Evan Chang, and Bill Fei</p>
+      <p class="is-family-primary">
+        The document version of this page is available <a class="hyperlink" href="https://drive.google.com/file/d/1yI-IfmMZ8ciN0JS5ygn_DYb_5kpccRKf/view">here</a>.
+      </p>
     </div>
 
-    <div class="box">
-      <p class="subtitle"> <strong>CODE OF CONDUCT</strong></p>
-      <p>As a math competition, we have a commitment to uphold the highest standards of academic integrity, and we expect all competitors to do the same. Cheating in this contest (refer to the competition rules) is extremely frowned upon - the main purpose of OMMC is to foster interest in mathematics and aid in mathematical development, and cheating on this contest helps with none of these things.</p>
-    </div>
-
-    <div class="box">
-      <p class="subtitle"> <strong>TERMS OF SERVICE</strong></p>
-      <p> All participants in the OMMC event are required to read and understand all rules outlined in the Official OMMC Rulebook. To access the rulebook, click <a href="https://docs.google.com/document/d/1S4TGik2Q-kDQqNAN1lboBdn9TItvnJG4w0Kr0ULQu7Y/edit#heading=h.ml9asl4g9utg">here</a>. Any form of inappropriate behavior is prohibited, and OMMC reserves the right to ban or prohibit participation in this competition if misconduct is found. All of the problems in the competition are the intellectual property of OMMC, and any instances of plagiarism or theft of OMMC problems may be subject to consequences.</p>
-    </div>
+    {%- with url = url_for("static", filename="documents/TOS.pdf") %}
+      <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
+          <embed src="{{ url }}" type="application/pdf" />
+      </object>
+    {% endwith -%}
   </section>
 {% endblock -%}
