@@ -11,6 +11,7 @@ from data.team import Team
 
 auth = Blueprint("auth", __name__)
 hash_password = lambda p : hashlib.sha3_384(p.encode()).hexdigest()
+solo_team = Team("Solo")
 
 def check_password(user_object, password: str):
     if not user_object.exists:
@@ -82,29 +83,31 @@ def signup():
     logCaptcha(captcha)
     if assertConditions(user_object, request.form.get("remember", True), zip(
         [
+            request.form.get("terms", False),
             captcha,
             not user_object.exists,
             Checker(username).is_valid,
             validate_email(email, check_regex=True, use_blacklist=True, check_mx=False, debug=False),
             len(list(user_object.database.where("email", "==", email).stream())) == 0
         ],
-        ["Please complete the reCAPTCHA.", "Username is already in use.", "Username not allowed.", "Invalid email.", "Email is already in use."]
+        [
+            "Please accept the Terms of Service.",
+            "Please complete the reCAPTCHA.",
+            "Username is already in use.",
+            "Username not allowed.",
+            "Invalid email.",
+            "Email is already in use."
+        ]
     )):
         user_object.update(
-            points = 0,
-            posts = [],
             team = "Solo",
             email = email,
-            bio = "No bio set.",
-            followers = [],
-            following = [],
             submitted = False,
             password = hash_password(password),
             created_date = datetime.datetime.now(),
             image_url = "https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_1280.png",
         )
 
-        solo_team = Team("Solo")
         current_members = solo_team["members"]
         current_members.append(username)
 

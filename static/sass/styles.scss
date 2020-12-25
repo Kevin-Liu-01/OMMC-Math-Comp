@@ -4,7 +4,10 @@ $info: #c9424b;
 $link: #42ecf5;
 
 @import "bulma/bulma.sass";
-@import "timeline.sass";
+
+@import "extensions/timeline.sass";
+@import "extensions/divider.sass";
+@import "extensions/radio.sass";
 
 input {
   cursor: vertical-text;

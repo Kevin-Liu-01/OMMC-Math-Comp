@@ -37,32 +37,36 @@
   </nav>
 
   <section class="px-6">
-    <div class="box">
-      <article class="media">
-        <div class="media-content">
-          <div class="content">
-            <strong class="subtitle is-family-secondary">
-              Notice
-            </strong>
+    {%- if team.name != "Solo" %}
+      <div class="box">
+        <strong>{{ team.members[0] }}</strong> is the team leader.
+      </div>
+    {% endif -%}
 
-            <p class="is-family-primary">
-              {%- if current_user.authenticated %}
-                {%- if current_user["team"] == team.name %}
-                  {%- if team.name == "Solo" %}
-                    You're currently participating solo, so you must submit from <a class="hyperlink" href="/user/{{ current_user.get_id() }}">your profile</a>.
-                  {%- else %}
-                    Your team's form will show here once the test becomes available.
-                  {% endif -%}
-                {%- else %}
-                  Since you aren't a member of this team, you cannot access this team's test.
-                {% endif -%}
-              {%- else %}
-                Since you aren't <a class="hyperlink" href="/login">signed in</a>, you cannot access this team's test.
-              {% endif -%}
-            </p>
-          </div>
-        </div>
-      </article>
+    <div class="box">
+      <strong class="subtitle is-family-secondary">
+        Notice
+      </strong>
+
+      <p class="is-family-primary">
+        {%- if current_user.authenticated %}
+          {%- if current_user["team"] == team.name %}
+            {%- if team.name == "Solo" %}
+              You're currently participating solo, so you must submit from <a class="hyperlink" href="/user/{{ current_user.get_id() }}">your profile</a>.
+            {%- else %}
+              Your team's form will show here once the test becomes available.
+            {% endif -%}
+          {%- else %}
+            {%- if team.name == "Solo" %}
+              Since you're already on a team, you cannot submit from <a class="hyperlink" href="/user/{{ current_user.get_id() }}">your profile</a>. 
+            {%- else %}
+              Since you aren't a member of this team, you cannot access this team's test.
+            {% endif -%}
+          {% endif -%}
+        {%- else %}
+          Since you aren't <a class="hyperlink" href="/login">signed in</a>, you cannot access this team's test.
+        {% endif -%}
+      </p>
     </div>
   </section>
 {% endblock -%}

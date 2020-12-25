@@ -12,8 +12,8 @@
     </div>
   </section>
 
-  <div class="columns is-gapless has-background-light">
-    <div class="column is-half">
+  <div class="columns is-gapless has-background-light" style="display: flex;">
+    <div class="column">
       <section class="hero">
         <div class="hero-body px-6">
           <p class="heading">Click to Join</p>
@@ -59,13 +59,15 @@
       </section>
     </div>
 
-    <div class="column is-half">
+    <div class="divider is-vertical">Or</div>
+
+    <div class="column">
       <div class="p-6 has-offset-1">
         <p class="heading">Create Your Own</p>
         <div class="box">
           {%- with messages = get_flashed_messages() %}
             {%- if messages %}
-              <div class="notification is-danger is-family-primary">
+              <div class="notification flashed is-danger is-family-primary">
                 {{ messages[0] }}
               </div>
             {% endif -%}
@@ -96,7 +98,12 @@
             </div>
 
             <div class="g-recaptcha" data-sitekey="6LeUQ_wZAAAAAL24DuAB0navLMupX39Uyjwv6S4W"></div>
+
             <br />
+            <div class="field">
+              <input class="is-checkradio is-info" id="rulesS" type="checkbox" name="rules">
+              <label for="rulesS">I agree to the <a class="hyperlink" target="_blank" href="/rules">rules</a></label>
+            </div>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
             <button id="submit" class="button bold is-block is-info is-fullwidth">Create</button>
@@ -113,7 +120,7 @@
         <button class="delete is-pulled-right mb-4" aria-label="close"></button>
         {%- with messages = get_flashed_messages() %}
           {%- if messages %}
-            <div class="notification is-danger is-family-primary">
+            <div class="notification flashed is-danger is-family-primary">
               {{ messages[0] }}
             </div>
           {% endif -%}
@@ -134,7 +141,12 @@
 
           <div class="g-recaptcha" data-sitekey="6LeUQ_wZAAAAAL24DuAB0navLMupX39Uyjwv6S4W"></div>
           <input type="hidden" name="team_name" value="{{ team_name }}" />
+
           <br />
+          <div class="field">
+            <input class="is-checkradio is-info" id="rulesJ" type="checkbox" name="rules">
+            <label for="rulesJ">I agree to the <a class="hyperlink" target="_blank" href="/rules">rules</a></label>
+          </div>
 
           <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
           <button id="submit" class="button bold is-block is-info is-fullwidth">Join</button>
@@ -149,15 +161,17 @@
       const $teamName = $("[name='team_name']");
 
       $(".team-box").click(event => {
-        if (event.currentTarget.id !== "Solo") {
+        if (event.target.tagName !== "A" && event.currentTarget.id !== "Solo") {
           $teamName.val(event.currentTarget.id);
           $modal.addClass("is-active");
+          $(".flashed").remove();
         }
       });
 
       $(".modal-background, .delete").click(() => {
         $teamName.val("");
         $modal.removeClass("is-active");
+        $(".flashed").remove();
       });
     });
   </script>

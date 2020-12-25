@@ -16,11 +16,18 @@
     <div class="box">
       <p class="heading">Headed by Ishaan Akula, Evan Chang, and Bill Fei</p>
       <p class="is-family-primary">
-        The document version of this page is available <a class="hyperlink" href="hhttps://drive.google.com/file/d/1DgtKQM5by30A1-4Ww-0dGvDXKSaCzIsU/view?usp=sharing">here</a>.
+        The document version of the test information is available <a class="hyperlink" target="_blank" href="https://drive.google.com/file/d/1DgtKQM5by30A1-4Ww-0dGvDXKSaCzIsU/view">here</a>. The guidebook is available <a class="hyperlink" target="_blank" href="https://drive.google.com/file/d/1yk38Jg3JlmUXQuL_yZRPwiosSTPvtNTP/view">here</a>.
       </p>
     </div>
 
     {%- with url = url_for("static", filename="documents/Info.pdf") %}
+      <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
+          <embed src="{{ url }}" type="application/pdf" />
+      </object>
+    {% endwith -%}
+
+    <br />
+    {%- with url = url_for("static", filename="documents/Guidebook.pdf") %}
       <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
           <embed src="{{ url }}" type="application/pdf" />
       </object>
