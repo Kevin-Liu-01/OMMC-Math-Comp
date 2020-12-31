@@ -85,7 +85,7 @@
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <p class="heading">Mid-March</p>
-              <p>Problems release, discussion opened</p>
+              <p>Problems released, discussion opened</p>
             </div>
           </div>
           <div class="timeline-item">
@@ -131,9 +131,22 @@
               <strong>Contact us!</strong>
             </p>
             <p class="is-family-primary">
-              We recommend that the majority of questions surrounding the competition be sent to the Official OMMC email. Send an email to one of the administrators only in the event that you want to address one of them individually. If you have witnessed or experienced any violations of the OMMC Code of Conduct event rules, please contact us immediately.
+              We recommend that the majority of questions surrounding the competition be sent to the official OMMC email. Send an email to one of the administrators only in the event that you want to address one of them individually. If you have witnessed or experienced any violations of the OMMC Code of Conduct event rules, please contact us immediately.
             </p>
-
+            <section class="p-5">
+              <div class="box">
+                <p class="heading">Headed by Ishaan Akula, Evan Chang, and Bill Fei</p>
+                <p class="is-family-primary">
+                  The document version of the test information is available <a class="hyperlink" target="_blank" href="https://drive.google.com/file/d/1DgtKQM5by30A1-4Ww-0dGvDXKSaCzIsU/view">here</a>. The guidebook is available <a class="hyperlink" target="_blank" href="https://drive.google.com/file/d/1yk38Jg3JlmUXQuL_yZRPwiosSTPvtNTP/view">here</a>.
+                </p>
+              </div>
+              {%- with url = url_for("static", filename="documents/Guidebook.pdf") %}
+                <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
+                    <embed src="{{ url }}" type="application/pdf" />
+                </object>
+              {% endwith -%}
+              <br/>
+            </section>
             <div class="columns">
               <p class="column has-text-centered">
                 Email: <a href="mailto:mmcofficial@gmail.com" class="mdi mdi-email"></a>
@@ -142,7 +155,7 @@
                 Twitter: <a href="https://twitter.com/OfficialOmmc" class="mdi mdi-twitter"></a>
               </p>
               <p class="column has-text-centered">
-                Instagram: <a href="https://www.instagram.com/ommcofficial" class="mdi mdi-instagram"></a>
+                Insta: <a href="https://www.instagram.com/ommcofficial" class="mdi mdi-instagram"></a>
               </p>
               <p class="column has-text-centered">
                 YouTube: <a href="https://www.youtube.com/channel/UCyphrZpMeuA1ATGPzlStsng" class="mdi mdi-youtube"></a>

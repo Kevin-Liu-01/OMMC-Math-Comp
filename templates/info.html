@@ -27,10 +27,5 @@
     {% endwith -%}
 
     <br />
-    {%- with url = url_for("static", filename="documents/Guidebook.pdf") %}
-      <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
-          <embed src="{{ url }}" type="application/pdf" />
-      </object>
-    {% endwith -%}
   </section>
 {% endblock -%}
