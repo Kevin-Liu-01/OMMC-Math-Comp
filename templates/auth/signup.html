@@ -54,12 +54,12 @@
             <input class="is-checkradio is-info" id="terms" type="checkbox" name="terms" style="column-width: 30px;">
             <label for="terms">I agree to the <a class="hyperlink" target="_blank" href="/terms">TOS</a></label>
           </div>
-          <div class="column field">
-            <input class="is-checkradio is-info" id="terms" type="checkbox" name="terms">
-            <label for="terms">I have filled out the <a class="hyperlink" target="_blank" href="https://docs.google.com/forms/d/10cutdQdb1SPCKgDYzY_243lzsOU5YbTM065LTJYen8w/viewform?edit_requested=true">registration form</a></label>
-          </div>
+          
         </div>
-
+        <div class="column field">
+          <input class="is-checkradio is-info" id="terms" type="checkbox" name="terms">
+          <label for="terms">I have filled out the <a class="hyperlink" target="_blank" href="https://docs.google.com/forms/d/10cutdQdb1SPCKgDYzY_243lzsOU5YbTM065LTJYen8w/viewform?edit_requested=true">registration form</a></label>
+        </div>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
         <button id="submit" class="button bold is-block is-info is-fullwidth">Sign up</button>
       </form>
