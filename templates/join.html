@@ -31,8 +31,6 @@
         <div class="hero-body px-6">
           <p class="heading">Click to Join</p>
           {%- if team_name == User(current_user.username)["team"] %}
-            {%- for doc in teams %}
-              {%- with team = User(current_user.username)["team"] %}
                 <div id="{{ doc.id }}" class="box team-box">
                   <article class="media">
                     <div class="media-content">
@@ -59,9 +57,9 @@
                 <div class="media-content">
                   <div class="content">
                     <p>
-                      <strong>Error</strong>
+                      <strong>Hey!</strong>
                       <br />
-                      Unfortunately, the teams have failed to load. Try reloading the page.
+                      You are not in a team! Join or create one, unless you want to stay solo.
                     </p>
                   </div>
                 </div>
