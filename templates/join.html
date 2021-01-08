@@ -30,8 +30,9 @@
       <section class="hero">
         <div class="hero-body px-6">
           <p class="heading">Click to Join</p>
-          {%- if teams %}
-              {%- with team = doc.to_dict() %}
+          {%- if team_name == User(current_user.username)["team"] %}
+            {%- for doc in teams %}
+              {%- with team = User(current_user.username)["team"] %}
                 <div id="{{ doc.id }}" class="box team-box">
                   <article class="media">
                     <div class="media-content">
