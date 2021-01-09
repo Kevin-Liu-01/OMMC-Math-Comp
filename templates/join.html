@@ -25,12 +25,13 @@
         </div>
       </article>
     </div>
-<!--
+
   <div class="columns is-gapless has-background-light" style="display: flex;">
     <div class="column">
       <section class="hero">
         <div class="hero-body px-6">
-          <p class="heading">Click to Join</p>
+          <p class="heading">COMPETING TEAMS</p>
+       
           {%- if teams %}
             {%- for doc in teams %}
               {%- with team = doc.to_dict() %}
@@ -38,8 +39,9 @@
                   <article class="media">
                     <div class="media-content">
                       <div class="content">
-                        <a href="/team/{{ doc.id }}"><strong>{{ doc.id }}</strong></a>
-
+                        <a href="/team/{{ doc.id }}"><strong>{{ doc.id }}</strong></a> 
+                        {%- if teams != "Solo" %}    
+                          {%- if current_user.username in team.members %}
                         <p>
                           <a class="hyperlink" href="/user/{{ team.members[0] }}">{{ team.members[0] }}</a>
                           {%- for member in team.members %}
@@ -47,6 +49,8 @@
                               <span>&middot; <a class="hyperlink" href="/user/{{ member }}">{{ member }}</a></span>
                             {% endif -%}
                           {% endfor -%}
+                          {% endif -%}
+                        {% endif -%}
                         </p>
                       </div>
                     </div>
@@ -188,5 +192,5 @@
         $(".flashed").remove();
       });
     });
-  </script>-->
+  </script>
 {% endblock -%}
