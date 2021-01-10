@@ -155,7 +155,11 @@ def join():
 
     previous_team = Team(current_user["team"])
     previous_members = previous_team["members"]
-    previous_members.remove(current_user.username)
+
+    try:
+        previous_members.remove(current_user.username)
+    except:
+        pass
 
     if len(previous_members) < 1 and previous_team.name != "Solo":
         previous_team.database.document(previous_team.name).delete()
