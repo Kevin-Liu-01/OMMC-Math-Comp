@@ -81,6 +81,25 @@ def team(name: str):
         return abort(404)
     return render_template("team.html", title=name, team=team_object)
 
+@main.route("/leave", methods=["GET"])
+@login_required
+def leave():
+    team = current_user["team"]
+    if team == "Solo":
+        return
+
+    previous_team = Team(team)
+    previous_members = previous_team["members"]
+    previous_members.remove(current_user.username)
+
+    if len(previous_members) < 1:
+        previous_team.database.document(team).delete()
+    else:
+        previous_team.update(members=previous_members or [])
+
+    current_user.update(team="Solo")
+    return render_template("team.html", title="Solo", team=Team("Solo"))
+
 @main.route("/join", methods=["GET", "POST"])
 @login_required
 def join():
@@ -136,7 +155,11 @@ def join():
 
     previous_team = Team(current_user["team"])
     previous_members = previous_team["members"]
-    previous_members.remove(current_user.username)
+
+    try:
+        previous_members.remove(current_user.username)
+    except:
+        pass
 
     if len(previous_members) < 1 and previous_team.name != "Solo":
         previous_team.database.document(previous_team.name).delete()
@@ -184,7 +207,11 @@ def create():
 
     previous_team = Team(current_user["team"])
     previous_members = previous_team["members"]
-    previous_members.remove(current_user.username)
+
+    try:
+        previous_members.remove(current_user.username)
+    except:
+        pass
 
     if len(previous_members) < 1 and previous_team.name != "Solo":
         previous_team.database.document(previous_team.name).delete()

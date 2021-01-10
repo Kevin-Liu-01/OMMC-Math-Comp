@@ -20,12 +20,10 @@
       </p>
     </div>
 
-    {%- with url = url_for("static", filename="documents/TestInfo.pdf") %}
+    {%- with url = url_for("static", filename="documents/Test_Info.pdf") %}
       <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
-          <embed src="{{ url }}" type="application/pdf" />
+        <embed src="{{ url }}" type="application/pdf" />
       </object>
     {% endwith -%}
-
-    <br />
   </section>
 {% endblock -%}
