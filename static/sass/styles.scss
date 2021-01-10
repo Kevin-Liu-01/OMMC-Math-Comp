@@ -23,6 +23,11 @@ a {
   }
 }
 
+.holder {
+  display: flex;
+  align-items: center;
+}
+
 .hyperlink {
   background: linear-gradient(to bottom, $link 0%, $link 100%);
   background-position: 0 100%;

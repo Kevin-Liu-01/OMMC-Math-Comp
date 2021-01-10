@@ -22,7 +22,7 @@
 
     {%- with url = url_for("static", filename="documents/TOS.pdf") %}
       <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
-          <embed src="{{ url }}" type="application/pdf" />
+        <embed src="{{ url }}" type="application/pdf" />
       </object>
     {% endwith -%}
   </section>

@@ -8955,6 +8955,10 @@ a:hover, a:active {
 a:not(.hyperlink):not(.bold) {
   color: black !important; }
 
+.holder {
+  display: flex;
+  align-items: center; }
+
 .hyperlink {
   background: linear-gradient(to bottom, #42ecf5 0%, #42ecf5 100%);
   background-position: 0 100%;
