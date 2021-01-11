@@ -53,6 +53,10 @@ def terms():
 def creators():
     return render_template("creators.html", title="Creators")
 
+@main.route("/sponsors")
+def sponsorships():
+    return render_template("sponsors.html", title="Sponsors")
+
 @main.route("/favicon.ico")
 def favicon():
     from flask import send_from_directory, current_app
