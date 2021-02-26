@@ -96,15 +96,7 @@
       <p class="is-family-primary">
         {%- if current_user.authenticated %}
           {%- if current_user["team"] == team.name %}
-            {%- if team.name == "Solo" %}
-              Round 1: https://test.gclocked.com/?form=-MT3dd0CLNrQe88vRwjj <br>
-              Round 2: https://test.gclocked.com/?form=-MTB739Ja3tmFqS1k9sP <br>
-              Round 3: https://test.gclocked.com/?form=-MTSFq9YPTdnIQJaYykS 
-            {%- else %}
-              Round 1: https://test.gclocked.com/?form=-MT3dd0CLNrQe88vRwjj <br>
-              Round 2: https://test.gclocked.com/?form=-MTB739Ja3tmFqS1k9sP <br>
-              Round 3: https://test.gclocked.com/?form=-MTSFq9YPTdnIQJaYykS
-            {% endif -%}
+
           {%- else %}
             {%- if team.name == "Solo" %}
               Since you're already on a team, you cannot submit from <a class="hyperlink" href="/user/{{ current_user.get_id() }}">your profile</a>.
