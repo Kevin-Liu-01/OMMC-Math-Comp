@@ -57,6 +57,10 @@ def creators():
 def sponsorships():
     return render_template("sponsors.html", title="Sponsors")
 
+@main.route("/contest2021")
+def contestyear():
+    return render_template("contest.html", title="Contest2021")
+
 @main.route("/favicon.ico")
 def favicon():
     from flask import send_from_directory, current_app
