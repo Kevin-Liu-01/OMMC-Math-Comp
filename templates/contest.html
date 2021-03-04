@@ -1,0 +1,68 @@
+{%- extends "master.html" %}
+
+{%- block main %}
+  <section class="hero is-info">
+    <div class="hero-body">
+      <p class="title is-family-secondary">
+        Contest 2021
+      </p>
+      <p class="subtitle is-family-primary">
+        View all three rounds of the 2021 OMMC Contest here!
+      </p>
+    </div>
+  </section>
+  <section>
+    <div style="text-align: center; background-color: yellow;">
+      <strong>FULL SOLUTIONS COMING SOON! </strong>
+    </div>
+  </section>
+  
+  <section class="px-5 pt-5">
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <strong>Rounds</strong>
+            <section class="columns p-5 is-multiline">
+
+              <div class="column is-one-third">
+                Round 1
+                <div class="card">
+                  {%- with url = url_for("static", filename="documents/Round1.pdf") %}
+                  <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
+                    <embed src="{{ url }}" type="application/pdf" />
+                  </object>
+                {% endwith -%}
+                </div>
+              </div>
+              
+            
+            <div class="column is-one-third">
+              Round 2
+              <div class="card">
+                {%- with url = url_for("static", filename="documents/Round2.pdf") %}
+                <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
+                  <embed src="{{ url }}" type="application/pdf" />
+                </object>
+              {% endwith -%}
+              </div>
+            </div>
+            <div class="column is-one-third">
+              Round 3
+              <div class="card">
+                {%- with url = url_for("static", filename="documents/Round3.pdf") %}
+                <object data="{{ url }}" type="application/pdf" width="100%" height="750px">
+                  <embed src="{{ url }}" type="application/pdf" />
+                </object>
+              {% endwith -%}
+              </div>
+            </div>
+
+            </section>
+
+          </div>
+        </div>
+      </article>
+    </div>
+</section>
+{% endblock -%}
