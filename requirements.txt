@@ -46,6 +46,6 @@ requests==2.25.0
 rsa==4.6
 six==1.15.0
 uritemplate==3.0.1
-urllib3==1.26.2
+urllib3==1.26.4
 username-validator==0.0.1
 Werkzeug==1.0.1
